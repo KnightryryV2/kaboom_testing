@@ -106,7 +106,27 @@
                     go("game");
                 })
             });
-            go("game");
+            scene("title", () => {
+                add([
+                    text("Untitled Bean Game"),
+                    pos(100, 50),
+                ]);
+                add([
+                    text("Play"),
+                    pos(100, 200),
+                    area(),
+                    "play",
+                ]);
+                add([
+                    sprite("bean"),
+                    pos(1100, 200),
+                    scale(5,5)
+                ])
+                onClick("play", () => {
+                    go("game")
+                })
+            }) 
+            go("title");
         </script>
     </body>
 </html>
