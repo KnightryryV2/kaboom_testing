@@ -11,7 +11,7 @@
             let speedscore = 0;
             let nodeciscore = 0;
             let yes = 1;
-            let highscore = document.cookie();
+            let x = document.cookie();
 
             kaboom();
             loadBean();
@@ -115,12 +115,12 @@
                 ]);
                 thing = add([
                     text("Reset High Score"),
-                    pos(100, 50),
+                    pos(200, 50),
                     "high"
                 ]);
                 add([
                     text("Play"),
-                    pos(100, 200),
+                    pos(1100, 100),
                     area(),
                     "play",
                 ]);
