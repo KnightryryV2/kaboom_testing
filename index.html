@@ -11,7 +11,22 @@
             let speedscore = 0;
             let nodeciscore = 0;
             let yes = 1;
-            let x = document.cookie();
+            let highscore = getCookie("highscore");
+            function getCookie(cname) {
+                let name = cname + "=";
+                let decodedCookie = decodeURIComponent(document.cookie);
+                let ca = decodedCookie.split(';');
+                for(let i = 0; i <ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }  
 
             kaboom();
             loadBean();
@@ -84,11 +99,22 @@
                 }
             });
             scene("lose", () => {
+                if(score > highscore) {
+                    document.cookie("highscore=" + nodeciscore)
+                    add([
+                        text("New highscore!"),
+                        pos(80 - 40, 100),
+                    ]);
+                }
                 
                 add([
                     text("Game Over"),
                     pos(center()),
                     origin("center"),
+                ]);
+                add([
+                    text("Highscore:" + getCookie("highscore")),
+                    pos(center()),
                 ]);
                 add([
                     text("Your Score: " + nodeciscore),
