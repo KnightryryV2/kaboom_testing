@@ -11,6 +11,7 @@
             let speedscore = 0;
             let nodeciscore = 0;
             let yes = 1;
+            let highscore = document.cookie("highscore");
 
             kaboom();
             loadBean();
@@ -83,6 +84,7 @@
                 }
             });
             scene("lose", () => {
+                
                 add([
                     text("Game Over"),
                     pos(center()),
@@ -111,6 +113,11 @@
                     text("Untitled Bean Game"),
                     pos(100, 50),
                 ]);
+                thing = add([
+                    text("Reset High Score"),
+                    pos(100, 50),
+                    "high"
+                ]);
                 add([
                     text("Play"),
                     pos(100, 200),
@@ -124,6 +131,10 @@
                 ])
                 onClick("play", () => {
                     go("game")
+                })
+                onClick("high", () => {
+                    document.cookie() = "highscore=0; path=/highscore/;";
+                    thing.text("High Score Reset!");
                 })
             }) 
             go("title");
