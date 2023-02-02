@@ -3,6 +3,7 @@ import kaboom from "https://unpkg.com/kaboom/dist/kaboom.mjs";
             let speedscore = 0;
             let nodeciscore = 0;
             let yes = 1;
+            let e = false;
 
             kaboom();
             loadBean();
